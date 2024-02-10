@@ -1,0 +1,55 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © crypt0nX777
+
+//@version=5
+indicator(title="Monthly Levels", overlay=true)
+var labelOffset =  input(70, "label display offset")
+
+//monthly
+monthHigh = request.security(syminfo.tickerid, 'M', high)[0]
+monthLow = request.security(syminfo.tickerid, 'M', low)[0]
+monthOpen = request.security(syminfo.tickerid, 'M', open)[0]
+// monthClose = request.security(syminfo.tickerid, 'M', close)[0]
+var monthHighLine = line.new(bar_index - 1, monthHigh, bar_index, monthHigh, color = color.black ,extend = extend.both)
+var monthLowLine = line.new(bar_index - 1, monthLow, bar_index, monthLow, color = color.black ,extend = extend.both)
+var monthOpenLine = line.new(bar_index - 1, monthOpen, bar_index, monthOpen, color = color.black ,extend = extend.both)
+// var monthCloseLine = line.new(bar_index - 1, monthClose, bar_index, monthClose, color = color.black ,extend = extend.both)
+if barstate.islast
+    line.set_xy1(monthHighLine, bar_index - 1, monthHigh)
+    line.set_xy2(monthHighLine, bar_index, monthHigh)
+    label.new(bar_index + labelOffset, monthHigh, text="monthly high", style=label.style_none, textcolor=color.black)
+    line.set_xy1(monthLowLine, bar_index - 1, monthLow)
+    line.set_xy2(monthLowLine, bar_index, monthLow)
+    label.new(bar_index + labelOffset, monthLow, text="monthly low", style=label.style_none, textcolor=color.black)
+    line.set_xy1(monthOpenLine, bar_index - 1, monthOpen)
+    line.set_xy2(monthOpenLine, bar_index, monthOpen)
+    label.new(bar_index + labelOffset, monthOpen, text="monthly open", style=label.style_none, textcolor=color.black)
+    // line.set_xy1(monthCloseLine, bar_index - 1, monthClose)
+    // line.set_xy2(monthCloseLine, bar_index, monthClose)
+    // label.new(bar_index + labelOffset, monthClose, text="monthly close", style=label.style_none, textcolor=color.black)
+
+
+
+
+// //Weekly
+// weekHigh = request.security(syminfo.tickerid, 'W', high)[0]
+// weekLow = request.security(syminfo.tickerid, 'W', low)[0]
+// weekOpen = request.security(syminfo.tickerid, 'W', open)[0]
+// // weekClose = request.security(syminfo.tickerid, 'M', close)[0]
+// var weekHighLine = line.new(bar_index - 1, weekHigh, bar_index, weekHigh, color = color.black ,extend = extend.both)
+// var weekLowLine = line.new(bar_index - 1, weekLow, bar_index, weekLow, color = color.black ,extend = extend.both)
+// var weekOpenLine = line.new(bar_index - 1, weekOpen, bar_index, weekOpen, color = color.black ,extend = extend.both)
+// // var weekCloseLine = line.new(bar_index - 1, weekClose, bar_index, weekClose, color = color.black ,extend = extend.both)
+// if barstate.islast
+//     line.set_xy1(weekHighLine, bar_index - 1, weekHigh)
+//     line.set_xy2(weekHighLine, bar_index, weekHigh)
+//     label.new(bar_index + labelOffset, weekHigh, text="weekly high", style=label.style_none, textcolor=color.black)
+//     line.set_xy1(weekLowLine, bar_index - 1, weekLow)
+//     line.set_xy2(weekLowLine, bar_index, weekLow)
+//     label.new(bar_index + labelOffset, weekLow, text="weekly low", style=label.style_none, textcolor=color.black)
+//     line.set_xy1(weekOpenLine, bar_index - 1, weekOpen)
+//     line.set_xy2(weekOpenLine, bar_index, weekOpen)
+//     label.new(bar_index + labelOffset, weekOpen, text="weekly open", style=label.style_none, textcolor=color.black)
+//     // line.set_xy1(weekCloseLine, bar_index - 1, weekClose)
+//     // line.set_xy2(weekCloseLine, bar_index, weekClose)
+//     // label.new(bar_index + labelOffset, weekClose, text="weekly close", style=label.style_none, textcolor=color.black)

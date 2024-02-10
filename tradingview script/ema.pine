@@ -1,0 +1,23 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © crypt0nX777
+
+//@version=5
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © crypt0nX777
+
+//@version=5
+indicator(title="EMA(12 50 200)", shorttitle="EMA", overlay=true, timeframe="", timeframe_gaps=true)
+len0 = input.int(12, minval=1, title="Length0")
+len1 = input.int(50, minval=1, title="Length1")
+len2 = input.int(200, minval=1, title="Length2")
+
+out0 = ta.ema(close, len0)
+plot(out0, title="12", color=color.red, offset=0)
+
+out1 = ta.ema(close, len1)
+plot(out1, title="50", color=color.green, offset=0)
+
+out2 = ta.ema(close, len2)
+plot(out2, title="200", color=color.blue, offset=0)
+
+
